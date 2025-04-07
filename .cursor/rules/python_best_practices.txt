@@ -1,0 +1,48 @@
+# Cursor Project Rule: Python Development Best Practices
+# Applies to: All Python files and configuration files in this project.
+# Pattern: **/*.py, pyproject.toml, install.sh, .env.template, .env
+
+# --- General Instructions ---
+# When working on this Python project, adhere to the following best practices:
+
+# 1. Virtual Environment:
+#    - Always assume a virtual environment named 'venv' exists in the project root.
+#    - If running Python commands or installing packages, ensure they operate within this 'venv'.
+#    - The standard activation command is 'source venv/bin/activate'.
+#    - The 'install.sh' script handles venv creation and dependency installation.
+
+# 2. Dependency Management:
+#    - Manage all Python dependencies via the 'pyproject.toml' file.
+#    - Use the standard '[project]' section or '[tool.poetry]' (if present).
+#    - When asked to add, remove, or update dependencies:
+#      a) Modify the 'dependencies' or 'optional-dependencies' list in 'pyproject.toml' appropriately.
+#      b) Remind the user to run './install.sh' (or 'poetry install' if using Poetry) to apply the changes to the 'venv'.
+
+# 3. Secrets and Configuration:
+#    - NEVER hardcode secrets (API keys, passwords, etc.) directly in the source code.
+#    - Store all secrets and environment-specific configuration variables in a '.env' file located in the project root.
+#    - The '.env' file MUST be listed in '.gitignore' and should NEVER be committed to version control.
+#    - Use '.env.template' as a reference for required variables.
+#    - Load these variables into the application's environment using the 'python-dotenv' library (e.g., `from dotenv import load_dotenv; load_dotenv()`). @file:.env.template
+
+# 4. Project Structure (src Layout):
+#    - This project uses the src layout.
+#    - The main application code resides in the 'src/hello_app/' directory.
+#    - Ensure 'pyproject.toml' is configured correctly (e.g., '[tool.setuptools] package-dir = {"" = "src"}'). @file:pyproject.toml
+#    - Define command-line entry points in '[project.scripts]'. @file:pyproject.toml
+#    - Place new modules within 'src/hello_app/'.
+#    - Use relative imports (e.g., `from . import module`) for imports within the 'hello_app' package. @file:src/hello_app/cli.py
+
+# 5. Code Style & Quality:
+#    - Adhere strictly to the formatting and linting rules defined in 'pyproject.toml', specifically sections like '[tool.ruff]' or '[tool.black]'.
+#    - Apply these rules when generating or modifying code. @file:pyproject.toml
+
+# 6. Installation Script:
+#    - The './install.sh' script is the primary way to set up the development environment and install dependencies. @file:install.sh
+
+# 7. Installation from Source (GitHub links):
+#    - CRITICAL: If the user asks to install a package or tool directly from a source repository URL (e.g., a GitHub link):
+#      a) First, examine the repository (if possible, look for pyproject.toml, setup.py, requirements.txt) to understand its dependencies and how it should be installed within *our* project structure (i.e., using pip within the 'venv').
+#      b) Identify the appropriate pip install command (e.g., `pip install git+https://github.com/user/repo.git`).
+#      c) Determine if adding this dependency to pyproject.toml is more appropriate than a direct pip install.
+#      d) ***IMPORTANT: Before executing any installation command, EXPLAIN to the user what you identified (dependencies, install method) and CONFIRM with the user that they want to proceed with the proposed installation method/command. Do not proceed without user confirmation.*** 

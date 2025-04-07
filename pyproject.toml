@@ -1,0 +1,60 @@
+# Save this as pyproject.toml in your project root
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zura"
+version = "0.1.0"
+description = "A zura application using the src layout."
+readme = "README.md" # Optional: Specify a README file
+requires-python = ">=3.9" # Specify your minimum Python version
+# license = { text = "MIT" } # Optional: Specify your license
+# authors = [
+#   { name="Your Name", email="your.email@example.com" },
+# ]
+# maintainers = [
+#   { name="Your Name", email="your.email@example.com" }
+# ]
+# classifiers = [ # Optional: PyPI classifiers for distribution
+#     "Programming Language :: Python :: 3",
+#     "License :: OSI Approved :: MIT License",
+#     "Operating System :: OS Independent",
+# ]
+
+# List your runtime dependencies here
+dependencies = [
+    # e.g., "requests>=2.20",
+    "python-dotenv>=0.15", # Highly recommended for loading .env files
+]
+
+[project.optional-dependencies]
+# List development/testing/extra dependencies here
+dev = [
+    "pytest",
+    "ruff", # Example linter/formatter
+    # "black", # Example formatter
+]
+
+[project.scripts]
+# Define command-line entry points
+# Points to the main function in src/zura/cli.py
+zura = "zura.cli:main"
+
+# [project.urls] # Optional: Links related to your project
+# "Homepage" = "https://github.com/yourusername/my_python_app"
+# "Bug Tracker" = "https://github.com/yourusername/my_python_app/issues"
+
+# --- Tool Specific Configurations ---
+# Add configurations for tools like linters, formatters, test runners etc.
+
+[tool.setuptools]
+# The package-dir configuration IS needed for the src layout
+package-dir = {"" = "src"}
+
+[tool.ruff]
+# line-length = 88 # Example configuration for Ruff
+# select = ["E", "F", "W", "I"] # Example rule selection
+
+# [tool.black]
+# line-length = 88 # Example configuration for Black 

@@ -1,6 +1,6 @@
 # zura
 
-An .
+An Python template for Agents or Workflows for AI and even not so much AI run by our frendly chap Zura.
 
 This project demonstrates a basic Python setup using a `src` layout, a virtual environment, dependency management with `pyproject.toml`, and environment variable handling with `.env` files.
 
