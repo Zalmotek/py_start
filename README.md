@@ -33,6 +33,7 @@ Follow these steps exactly to set up your development environment:
     *   Create a virtual environment named `venv` if it doesn't exist.
     *   If run with `./install.sh --clean`, it will first remove the existing `venv` and common temporary files (`__pycache__`, `.pytest_cache`, build artifacts) for a completely fresh start.
     *   Install the required dependencies listed in `pyproject.toml` and the `py_start` package itself into the `venv`.
+    *   **Edit the `.env` file** (created automatically if missing) to input your specific settings.
     ```bash
     ./install.sh
     ```
@@ -43,14 +44,7 @@ Follow these steps exactly to set up your development environment:
     ./install.sh --clean
     ```
 
-4.  **Configure Environment Variables:**
-    Copy the template file to create your local environment file.
-    ```bash
-    cp .env.template .env
-    ```
-    Now, **edit the `.env` file** with a text editor and replace placeholder values (like `USERNAME=YourName`) with your actual desired settings or secrets. **Do not commit the `.env` file to Git.**
-
-5.  **Activate the Virtual Environment:**
+4.  **Activate the Virtual Environment:**
     Before running the application or installing more packages, you need to activate the virtual environment created by the script.
     ```bash
     source venv/bin/activate
