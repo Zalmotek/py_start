@@ -94,4 +94,4 @@ To add new configuration variables:
 
 ## Development
 
-*   **Dependencies:** To add or remove dependencies, edit the `[project]` -> `dependencies` list in `
+*   **Dependencies:** To add or remove dependencies, edit the `[project]` -> `dependencies` list in `pyproject.toml`.
