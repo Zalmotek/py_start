@@ -4,9 +4,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "zura"
+name = "py_start"
 version = "0.1.0"
-description = "A zura application using the src layout."
+description = "A py_start application using the src layout."
 readme = "README.md" # Optional: Specify a README file
 requires-python = ">=3.9" # Specify your minimum Python version
 # license = { text = "MIT" } # Optional: Specify your license
@@ -38,8 +38,8 @@ dev = [
 
 [project.scripts]
 # Define command-line entry points
-# Points to the main function in src/zura/cli.py
-zura = "zura.cli:main"
+# Points to the main function in src/py_start/cli.py
+py_start = "py_start.cli:main"
 
 # [project.urls] # Optional: Links related to your project
 # "Homepage" = "https://github.com/yourusername/my_python_app"

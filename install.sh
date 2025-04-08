@@ -110,11 +110,30 @@ else
     fi
 fi
 
+# --- Post-installation steps ---
+
+# Check if .env file exists, if not, copy from template
+if [ ! -f ".env" ]; then
+    if [ -f ".env.template" ]; then
+        echo "Creating .env file from .env.template..."
+        cp .env.template .env
+    else
+        echo "Warning: .env.template not found. Cannot create .env automatically."
+    fi
+else
+    echo ".env file already exists."
+fi
+
 echo ""
 echo "--------------------------------------------------"
 echo "Setup complete."
 echo "Activate the virtual environment using:"
 echo "  source $VENV_DIR/bin/activate"
+echo ""
+echo "Then, run the application using:"
+echo "  py_start"
+echo ""
+echo "IMPORTANT: If a new .env file was created, please edit it now to add your configurations/secrets."
 echo "--------------------------------------------------"
 
 exit 0 
